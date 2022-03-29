@@ -62,8 +62,39 @@ console.table(contentArr);
 let indexOfN = optionArr.indexOf("-n");
 let indexOfB = optionArr.indexOf("-b");
 
+let finalOption = "";
 
+if(indexOfB != -1 && indexOfN != -1){
+    if(indexOfB > indexOfN){
+        finalOption = "-n";
+    }else{
+        finalOption = "-b";
+    }
+}else if(indexOfB != -1){
+    finalOption = "-b";
+}else if(indexOfN != -1){
+    finalOption = "-n";
+}
 
+if(finalOption == "-b"){
+    modifyContentByB();
+}else if(finalOption == "-n"){
+    modifyContentByN();
+}
+
+function modifyContentByB(){
+    let count = 1;
+    for(let i = 0; i < contentArr.length; i++){
+        if(contentArr[i] != ""){
+            contentArr[i] = count++ + ") " + contentArr[i];
+        }
+    }
+}
+function modifyContentByN(){
+    for(let i = 0; i < contentArr.length; i++){
+        contentArr[i] = (i+1) + ") " + contentArr[i];
+    }
+}
 
 for(let i = 0; i < contentArr.length; i++){
    
